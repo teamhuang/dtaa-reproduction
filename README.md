@@ -26,3 +26,11 @@ The benchmark command runs seven checks using constructed examples. The summary 
 The summary script starts from archived extractions, classifications or aggregate results. It does not regenerate the simulation replicates or refit the EARLYDRAIN DML, coiling prediction or Familial sensitivity models. The archive is separate from this repository.
 
 For era stratification, the 11 records assigned to a 2026 issue were included in the 2023–2025 group after their 2025 online publication dates were verified in PubMed. All other included records use their archived year.
+
+## Agreement on item-level classifications
+
+Run the following with the archived scoring forms and reference classifications supplied separately. Each CSV must contain one row per variable_id and complete D1_timing_class, D3_causal_role and D4_reproducibility columns.
+
+    python rating_agreement.py --rater rating_B.csv --key reference.csv --ref rating_A.csv
+
+The command prints dimension-specific Cohen’s kappa, observed agreement, item-level percentile bootstrap intervals (5,000 resamples, seed 42) and item counts. Repeat with the two rating forms exchanged to reproduce the A-session resampling order. The program checks that all forms cover the same items. Patient records and rating forms are not distributed here. The repository does not contain the original raw-waveform, transcriptomic or cohort refitting pipelines.
